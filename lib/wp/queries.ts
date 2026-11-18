@@ -33,6 +33,13 @@ export const ALL_PROJECTS_QUERY = `
           websiteUrl
           cardBackground
           thumbnailFocus
+          heroImage {
+            node {
+              sourceUrl
+              altText
+              mediaDetails { width height }
+            }
+          }
         }
       }
     }

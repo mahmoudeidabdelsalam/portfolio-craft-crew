@@ -23,32 +23,35 @@ export function ProjectCard({ project, layout = "regular", priority = false }: P
   const useWide = layout === "wide";
   const visibleServices = project.services.slice(0, 3);
   const extraCount = Math.max(0, project.services.length - visibleServices.length);
+  const projectHref = `/projects/${project.slug}`;
 
   return (
     <article className="group flex min-w-[min(100%,300px)] flex-col gap-3">
-      <div className="overflow-hidden rounded-[20px]" style={{ background: project.cardBackground }}>
-        <div className="project-zoom h-full w-full overflow-hidden rounded-[20px]">
-          <div className={`relative overflow-hidden ${useWide ? "aspect-[16/10]" : "aspect-[4/3]"}`} style={{ background: project.cardBackground }}>
-            {project.thumbnail ? (
-              <Image
-                src={project.thumbnail.url}
-                alt={project.thumbnail.alt}
-                fill
-                priority={priority}
-                sizes={useWide ? "(min-width: 1000px) 50vw, 100vw" : "(min-width: 1000px) 33vw, 100vw"}
-                className="object-cover"
-                style={{ objectPosition: project.thumbnailFocus }}
-              />
-            ) : (
-              <PlaceholderArt seed={project.slug} />
-            )}
+      <Link href={projectHref} aria-label={`View ${project.title} project`}>
+        <div className="overflow-hidden rounded-[20px]" style={{ background: project.cardBackground }}>
+          <div className="project-zoom h-full w-full overflow-hidden rounded-[20px]">
+            <div className={`relative overflow-hidden ${useWide ? "aspect-[16/10]" : "aspect-[4/3]"}`} style={{ background: project.cardBackground }}>
+              {project.thumbnail ? (
+                <Image
+                  src={project.thumbnail.url}
+                  alt={project.thumbnail.alt}
+                  fill
+                  priority={priority}
+                  sizes={useWide ? "(min-width: 1000px) 50vw, 100vw" : "(min-width: 1000px) 33vw, 100vw"}
+                  className="object-cover"
+                  style={{ objectPosition: project.thumbnailFocus }}
+                />
+              ) : (
+                <PlaceholderArt seed={project.slug} />
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
 
       <div className="flex flex-col gap-3">
         <h3 className={`font-[family-name:var(--font-display)] font-semibold tracking-[-0.025em] text-[#0B0B0C] ${useWide ? "text-[30px] leading-[1.15]" : "text-[24px] leading-[1.15]"}`}>
-          {project.title}
+          <Link href={projectHref}>{project.title}</Link>
         </h3>
 
         <div className="flex flex-wrap gap-2">
@@ -65,7 +68,7 @@ export function ProjectCard({ project, layout = "regular", priority = false }: P
         </div>
 
         <Link
-          href={`/projects/${project.slug}`}
+          href={projectHref}
           className="project-link inline-flex items-center gap-[8px] text-[15px] font-semibold text-[#0B0B0C] transition-all duration-200"
         >
           <span>Show project</span>

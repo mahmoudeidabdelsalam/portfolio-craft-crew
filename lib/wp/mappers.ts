@@ -52,7 +52,7 @@ export function mapProject(node: WPProjectNode): Project {
     domain: website.domain,
     cardBackground: details?.cardBackground || DEFAULT_BACKGROUND,
     thumbnailFocus: normalizeFocus(details?.thumbnailFocus),
-    thumbnail: featuredImage,
+    thumbnail: heroImage || featuredImage,
     hero: heroImage || featuredImage,
     gallery: (details?.gallery?.nodes ?? [])
       .map((image) => mapImage(image, fallbackAlt))
