@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "NODE_USE_SYSTEM_CA=1 next dev",
     "build": "next build",
-    "cf:build": "opennextjs-cloudflare build",
-    "cf:preview": "opennextjs-cloudflare preview",
-    "cf:deploy": "opennextjs-cloudflare deploy",
+    "cf:build": "next build",
+    "cf:preview": "wrangler pages dev ./out",
+    "cf:deploy": "wrangler pages deploy ./out",
     "start": "NODE_USE_SYSTEM_CA=1 next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
@@ -19,7 +19,6 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.20.17",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
     "@types/react": "^19",

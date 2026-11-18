@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 
 import { PlaceholderArt } from "@/components/PlaceholderArt";
 import { ProjectCard } from "@/components/ProjectCard";
-import { getAllProjects, getNextProject, getProjectBySlug, getSimilarProjects } from "@/lib/projects";
+import { getAllProjects, getNextProject, getProjectBySlug, getSimilarProjects, getSlugs } from "@/lib/projects";
 import { contacts, mainSiteUrl, navLinks } from "@/lib/site";
 
 function Logo() {
@@ -38,6 +38,13 @@ export async function generateMetadata({
       images: socialImage ? [socialImage.url] : [],
     },
   };
+}
+
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  const slugs = await getSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {

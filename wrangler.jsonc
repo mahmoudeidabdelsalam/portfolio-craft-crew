@@ -1,17 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "portfolio-craft-crew",
-  "main": ".open-next/worker.js",
+  "name": "craft-crew-portfolio",
+  "pages_build_output_dir": "./out",
   "compatibility_date": "2026-11-17",
   "compatibility_flags": ["nodejs_compat"],
-  "assets": {
-    "directory": ".open-next/assets",
-    "binding": "ASSETS"
-  },
   "observability": {
     "enabled": true
-  },
-  "vars": {
-    "WP_GRAPHQL_URL": "https://portfolio.craft-crew.org/graphql"
-  },
+  }
 }
