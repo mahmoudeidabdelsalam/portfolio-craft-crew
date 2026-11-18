@@ -10,5 +10,8 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "vars": {
+    "WP_GRAPHQL_URL": "https://portfolio.craft-crew.org/graphql"
+  },
 }
