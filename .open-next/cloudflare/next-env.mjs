@@ -1,0 +1,3 @@
+export const production = {"WP_GRAPHQL_URL":"https://portfolio.craft-crew.org/graphql","WP_IMAGE_HOST":"craft-portfolio-wp.test","WP_IMAGE_PROTOCOL":"https","NEXT_PUBLIC_SITE_URL":"http://localhost:3000","NEXT_PUBLIC_MAIN_SITE_URL":"https://www.craft-crew.com","REVALIDATE_SECRET":"42d2957f7a7057009d1333df733f04e2159d5259fb3bae120c66ce7db82f6f55"};
+export const development = {"WP_GRAPHQL_URL":"https://portfolio.craft-crew.org/graphql","WP_IMAGE_HOST":"craft-portfolio-wp.test","WP_IMAGE_PROTOCOL":"https","NEXT_PUBLIC_SITE_URL":"http://localhost:3000","NEXT_PUBLIC_MAIN_SITE_URL":"https://www.craft-crew.com","REVALIDATE_SECRET":"42d2957f7a7057009d1333df733f04e2159d5259fb3bae120c66ce7db82f6f55"};
+export const test = {};
