@@ -174,7 +174,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             </aside>
 
             <div className="min-w-0 flex-[2.4_1_560px]">
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[24px]" style={{ background: project.cardBackground }}>
+              <div className="relative aspect-[16/10] overflow-hidden" style={{ background: project.cardBackground }}>
                 {project.hero ? (
                   <Image
                     src={project.hero.url}
@@ -191,7 +191,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               </div>
 
               {caseStudyImages.map((image, index) => (
-                <div key={`${image.url}-${index}`} className="mt-5 overflow-hidden rounded-[24px] bg-[#EEF0F4]">
+                <div key={`${image.url}-${index}`} className="mt-5 overflow-hidden bg-[#EEF0F4]">
                   <Image
                     src={image.url}
                     alt={image.alt}
@@ -228,8 +228,8 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               </span>
             </div>
 
-            <div className="min-w-[260px] flex-[1.3_1_360px] overflow-hidden rounded-[20px]" style={{ background: nextProject.cardBackground }}>
-              <div className="project-zoom aspect-[16/10] overflow-hidden rounded-[20px]">
+            <div className="min-w-[260px] flex-[1.3_1_360px] overflow-hidden rounded-sm" style={{ background: nextProject.cardBackground }}>
+              <div className="project-zoom aspect-[16/10] overflow-hidden rounded-sm relative">
                 {nextProject.thumbnail ? (
                   <Image
                     src={nextProject.thumbnail.url}

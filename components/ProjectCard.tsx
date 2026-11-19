@@ -24,32 +24,38 @@ export function ProjectCard({ project, layout = "regular", priority = false }: P
   const visibleServices = project.services.slice(0, 3);
   const extraCount = Math.max(0, project.services.length - visibleServices.length);
   const projectHref = `/projects/${project.slug}`;
+  const cardStyle = {
+    backgroundColor: project.cardBackground,
+    borderColor: `color-mix(in srgb, ${project.cardBackground} 72%, #0B0B0C)`,
+  };
+  const imageOverlayStyle = {
+    background: `linear-gradient(to top, ${project.cardBackground} 0%, color-mix(in srgb, ${project.cardBackground} 0%, transparent) 70%)`,
+  };
 
   return (
-    <article className="group flex min-w-[min(100%,300px)] flex-col gap-3">
-      <Link href={projectHref} aria-label={`View ${project.title} project`}>
-        <div className="overflow-hidden rounded-[20px]" style={{ background: project.cardBackground }}>
-          <div className="project-zoom h-full w-full overflow-hidden rounded-[20px]">
-            <div className={`relative overflow-hidden ${useWide ? "aspect-[16/10]" : "aspect-[4/3]"}`} style={{ background: project.cardBackground }}>
-              {project.thumbnail ? (
-                <Image
-                  src={project.thumbnail.url}
-                  alt={project.thumbnail.alt}
-                  fill
-                  priority={priority}
-                  sizes={useWide ? "(min-width: 1000px) 50vw, 100vw" : "(min-width: 1000px) 33vw, 100vw"}
-                  className="object-cover"
-                  style={{ objectPosition: project.thumbnailFocus }}
-                />
-              ) : (
-                <PlaceholderArt seed={project.slug} />
-              )}
-            </div>
+    <article className="group flex min-w-[min(100%,300px)] flex-col overflow-hidden rounded-sm border" style={cardStyle}>
+      <Link className="overflow-hidden" href={projectHref} aria-label={`View ${project.title} project`}>
+        <div className="project-zoom h-full w-full overflow-hidden">
+          <div className={`relative overflow-hidden ${useWide ? "aspect-[16/10]" : "aspect-[4/3]"}`} style={{ background: project.cardBackground }}>
+            {project.thumbnail ? (
+              <Image
+                src={project.thumbnail.url}
+                alt={project.thumbnail.alt}
+                fill
+                priority={priority}
+                sizes={useWide ? "(min-width: 1000px) 50vw, 100vw" : "(min-width: 1000px) 33vw, 100vw"}
+                className="object-cover"
+                style={{ objectPosition: project.thumbnailFocus }}
+              />
+            ) : (
+              <PlaceholderArt seed={project.slug} />
+            )}
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={imageOverlayStyle} />
           </div>
         </div>
       </Link>
 
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 p-4 bg-white">
         <h3 className={`font-[family-name:var(--font-display)] font-semibold tracking-[-0.025em] text-[#0B0B0C] ${useWide ? "text-[30px] leading-[1.15]" : "text-[24px] leading-[1.15]"}`}>
           <Link href={projectHref}>{project.title}</Link>
         </h3>
